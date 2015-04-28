@@ -11,7 +11,8 @@ import android.widget.TextView;
 public class resultsActivity extends ActionBarActivity {
 
     //global
-    public static long CHRONOBASE = 0;
+   // public static long CHRONOBASE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,28 +26,30 @@ public class resultsActivity extends ActionBarActivity {
 
         //chrono base
 
-        this.CHRONOBASE = MainActivity.CHRONOBASE;
-        Chronometer chronoObject = (Chronometer) findViewById(R.id.chronometer);
-        chronoObject.setBase(this.CHRONOBASE);
+       // this.CHRONOBASE = MainActivity.CHRONOBASE;
+        Chronometer chronoObject = (Chronometer) findViewById(R.id.chronometer2);
+     //   chronoObject.setBase(MainActivity.CHRONOBASE);
+        chronoObject.setBase(MainActivity.CHRONOBASE);
+        chronoObject.setText(MainActivity.CHRONOTEXT);
         chronoObject.start();
-        
+
         //set new text
 
         //imie
         TextView textViewObject = (TextView) findViewById(R.id.textView5);
-        textViewObject.setText(name);
+        textViewObject.setText("Imie: "+name);
 
         //nazwisko
         textViewObject = (TextView) findViewById(R.id.textView6);
-        textViewObject.setText(surname);
+        textViewObject.setText("Nazwisko: "+surname);
 
         //miejsce
         textViewObject = (TextView) findViewById(R.id.textView7);
-        textViewObject.setText(place);
+        textViewObject.setText("Miejsce: "+place);
 
         //czas
         textViewObject = (TextView) findViewById(R.id.textView8);
-        textViewObject.setText("Czas: " +chronoTime);
+        textViewObject.setText("Czas: " +MainActivity.CHRONOTEXT);
 
         //seek bar
         textViewObject = (TextView) findViewById(R.id.textView9);

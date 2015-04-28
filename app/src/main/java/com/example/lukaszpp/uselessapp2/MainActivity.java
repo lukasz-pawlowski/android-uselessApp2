@@ -13,7 +13,8 @@ import android.widget.SeekBar;
 
 public class MainActivity extends ActionBarActivity {
 
-    public static long CHRONOBASE = 0;
+    public static String CHRONOTEXT;
+    public static long CHRONOBASE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +24,10 @@ public class MainActivity extends ActionBarActivity {
         //get chronometer
         Chronometer chronoObject = (Chronometer) findViewById(R.id.chronometer);
       //  if(resultsActivity.CHRONOBASE == null) {
-            this.CHRONOBASE = resultsActivity.CHRONOBASE;
+           // this.CHRONOBASE = resultsActivity.CHRONOBASE;
        // }
-        chronoObject.setBase(CHRONOBASE);
+        chronoObject.setBase(this.CHRONOBASE);
+        chronoObject.setText(this.CHRONOTEXT);
         chronoObject.start();
     }
 
@@ -66,8 +68,9 @@ public class MainActivity extends ActionBarActivity {
         //get chronometer
         Chronometer chronoObject = (Chronometer) findViewById(R.id.chronometer);
         chronoObject.stop();
-        long chronoBase = chronoObject.getBase();
-        this.CHRONOBASE = chronoBase;
+        this.CHRONOTEXT = chronoObject.getText().toString();
+        this.CHRONOBASE = chronoObject.getBase();
+
         String chronoTime = chronoObject.getText().toString();
 
         //get text

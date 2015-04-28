@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">UselessApp2</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="hello_world">Witaj Świecie!</string>
+    <string name="action_settings">Ustawienia</string>
+
+    <string name="giveName">Podaj Imię</string>
+    <string name="giveSurname">Podaj Nazwisko</string>
+    <string name="givePlace">Podaj Miejscowość</string>
+    <string name="giveHowMuch">Jak bardzo lubisz AMW?</string>
+    <string name="saveButton">Zapisz</string>
+    <string name="title_activity_results">resultsActivity</string>
+
 </resources>

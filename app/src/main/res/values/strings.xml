@@ -8,7 +8,9 @@
     <string name="giveSurname">Podaj Nazwisko</string>
     <string name="givePlace">Podaj Miejscowość</string>
     <string name="giveHowMuch">Jak bardzo lubisz AMW?</string>
-    <string name="saveButton">Zapisz</string>
+    <string name="saveButton">Zapisz w bazie</string>
+    <string name="openButton">Otwórz bazę</string>
     <string name="title_activity_results">resultsActivity</string>
+    <string name="title_activity_show_database">showDatabase</string>
 
 </resources>

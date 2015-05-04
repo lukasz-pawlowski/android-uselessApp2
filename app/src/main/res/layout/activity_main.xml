@@ -92,4 +92,14 @@
         android:onClick="saveButtonClick"
         android:layout_alignParentBottom="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/openButton"
+        android:id="@+id/button2"
+        android:onClick="openButtonClick"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
 </RelativeLayout>

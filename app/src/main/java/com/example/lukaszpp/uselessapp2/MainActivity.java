@@ -1,5 +1,7 @@
 package com.example.lukaszpp.uselessapp2;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.SeekBar;
+
+import java.io.FileOutputStream;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -61,8 +65,16 @@ public class MainActivity extends ActionBarActivity {
     public final static String CHRONOTIME = "com.example.lukaszpp.uselessapp2.CHRONOTIME";
     public final static String SEEKBARTEXT = "com.example.lukaszpp.uselessapp2.SEEKBARTEXT";
 
+    //otworzenie bazy danych
+    public void openButtonClick(View view){
+        //create intent
+        Intent intent = new Intent(this, showDatabase.class);
 
+        //wystartowanie aktywnosci
+        startActivity(intent);
+    }
 
+    //zapisywanie i otworzenie wyniku
     public void saveButtonClick(View view){
 
         //get chronometer
@@ -87,13 +99,8 @@ public class MainActivity extends ActionBarActivity {
         SeekBar seekBarObject = (SeekBar) findViewById(R.id.seekBar);
         String seekBarText = String.valueOf(seekBarObject.getProgress());
 
-
-        //check if empty
-
-
         //create intent
         Intent intent = new Intent(this, resultsActivity.class);
-
 
         //push to intent
         intent.putExtra(NAME, name);
@@ -102,7 +109,50 @@ public class MainActivity extends ActionBarActivity {
         intent.putExtra(SEEKBARTEXT, seekBarText);
         intent.putExtra(CHRONOTIME, chronoTime);
 
-        //wystartowanie aktywnosci
-        startActivity(intent);
+        //zapisywanie notatki
+
+        //get text
+        Long tsLong = System.currentTimeMillis();
+        String filename = tsLong.toString();
+
+
+           // EditText textFilecontentObject = (EditText) findViewById(R.id.textFilecontent);
+            String filecontent = "Imię: " + name + "\n" +
+                    "\r\n" + "Nazwisko: " + surname +"\n" +
+                    "\r\n" + "Miejsce: " + place +"\n" +
+                    "\r\n" + "Jak lubisz AMW: " + seekBarText+"\n" +
+                    "\r\n" + "Czas Chrono: " + chronoTime;
+
+            //show text
+            // / TextView textViewObject = (TextView) findViewById(R.id.textView);
+            //  textViewObject.setText(message);
+
+
+            try {
+                FileOutputStream fos = openFileOutput(filename,2);
+                fos.write(filecontent.getBytes());
+                fos.close();
+
+                //wystartowanie aktywnosci
+                startActivity(intent);
+
+            }catch(Exception e){
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+                builder1.setMessage("Blad zapisu do pliku " + filename);
+                builder1.setCancelable(true);
+                builder1.setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+
+            }
+
+
     }
 }

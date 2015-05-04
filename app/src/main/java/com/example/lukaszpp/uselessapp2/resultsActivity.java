@@ -78,4 +78,12 @@ public class resultsActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onStop(){
+        Chronometer chronoObject = (Chronometer) findViewById(R.id.chronometer2);
+        MainActivity.CHRONOTEXT = chronoObject.getText().toString();
+        chronoObject.stop();
+
+        super.onStop();
+    }
 }
